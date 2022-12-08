@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')
+            $table->foreignId('product_id')
                 ->constrained();
 
-            $table->foreignId('product_id')
+            $table->foreignId('order_id')
                 ->constrained();
 
             $table->decimal('price', 10, 2);
