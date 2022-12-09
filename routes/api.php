@@ -20,7 +20,7 @@ Route::get('/', function() {
 
 Route::namespace('App\Http\Controllers\Api')->group(function() {
     Route::resource('user', 'UserController');
-    // Route::resource('category', 'CategoryController');
+    Route::resource('category', 'CategoryController');
     // Route::resource('category', 'CategoryController');
     // Route::resource('category', 'CategoryController');
     // Route::resource('category', 'CategoryController');
