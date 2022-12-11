@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\categoryRequest;
-use App\Models\Category;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,25 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            return Category::with('category')->get();
-        } catch (\Throwable $th) {
-            return response()->json($th->getMessage(), 401);
-        }
-    }
-
-    public function indexPivot()
-    {
-        try {
-            return Category::with('categories')->where('categoryid', null)->get();
-        } catch (\Throwable $th) {
-            return response()->json($th->getMessage(), 401);
-        }
-    }
-
-    public function indexFather()
-    {
-        try {
-            return Category::where('categoryid', null)->get();
+            return Product::get();
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);
         }
@@ -47,15 +29,21 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(categoryRequest $request)
+    public function store(ProductRequest $request)
     {
         try {
             $data = $request->all();
 
-            $category = Category::create($data);
+
+            $product = Product::create($data);
+
+            if (isset($data['categories'])) {
+                $product->categories()->sync($data['categories']);
+            }
+
             return response()->json([
                 'message' => 'Categoria Adicionada Com Sucesso!',
-                'data' => $category,
+                'data' => $product,
             ]);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);
@@ -71,18 +59,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
-            $category = Category::with('categories', 'category')->find($id);
-            return response()->json($category);
-        } catch (\Throwable $th) {
-            return response()->json($th->getMessage(), 401);
-        }
-    }
-
-    public function products($id)
-    {
-        try {
-            $category = Category::findOrFail($id);
-            return response()->json($category->products);
+            $product = Product::with('categories', 'items')->find($id);
+            return response()->json($product);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);
         }
@@ -95,11 +73,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(categoryRequest $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         try {
-            $category = Category::find($id);
-            $category->update($request->all());
+            $data = $request->all();
+            $product = Product::find($id);
+            $product->update($data);
+
+            if (isset($data['categories'])) {
+                $product->categories()->sync($data['categories']);
+            }
+
             return response()->json([
                 'message' => 'Categoria Atualizada Com Sucesso!'
             ], 200);
@@ -117,8 +101,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         try {
-            $category = Category::find($id);
-            $category->delete();
+            $product = Product::find($id);
+            $product->delete();
 
             return response()->json([
                 'message' => 'Categoria Deletada Com Sucesso!'
