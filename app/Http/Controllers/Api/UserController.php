@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -25,8 +24,6 @@ class UserController extends Controller
             return response()->json($user, 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
-            // $message = new ApiMessages($e->getMessage());
-            // return response()->json($message->getMessage(), 401);
         }
     }
 
@@ -39,13 +36,11 @@ class UserController extends Controller
 
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
-            // $message = new ApiMessages($e->getMessage());
-            // return response()->json($message->getMessage(), 401);
         }
 
     }
 
-    public function store(UserRequest $request) {
+    public function store(Request $request) {
 
         $data = $request->all();
 
@@ -57,12 +52,10 @@ class UserController extends Controller
             return response()->json(['message' => __('messages.createUser')], 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
-            // $message = new ApiMessages($e->getMessage());
-            // return response()->json($message->getMessage(), 401);
         }
     }
 
-    public function update($id, UserRequest $request) {
+    public function update($id,Request $request) {
         $data = $request->all();
 
         if($request->has('password') && $request->get('password')) {
@@ -76,15 +69,9 @@ class UserController extends Controller
             $user = $this->user->findOrFail($id);
             $user->update($data);
 
-            return response()->json([
-                'data' => [
-                    'msg' => __('messages.updateUser')
-                ]
-            ], 200);
+            return response()->json(['message' => __('messages.updateUser')], 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
-            // $message = new ApiMessages($e->getMessage());
-            // return response()->json($message->getMessage(), 401);
         }
     }
 
@@ -98,8 +85,6 @@ class UserController extends Controller
             return response()->json(['message' => __('messages.deleteUser')], 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
-            // $message = new ApiMessages($e->getMessage());
-            // return response()->json($message->getMessage(), 401);
         }
     }
 }

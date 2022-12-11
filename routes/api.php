@@ -22,7 +22,18 @@ Route::namespace('App\Http\Controllers\Api')->group(function() {
     Route::resource('user', 'UserController');
     Route::resource('category', 'CategoryController');
     Route::resource('product', 'ProductController');
-    // Route::resource('category', 'CategoryController');
+
+    Route::group(['middleware' => 'api'], function() {
+        Route::post('login', 'AuthController@login');
+        Route::post('logout', 'AuthController@logout');
+        Route::post('refresh', 'AuthController@refresh');
+        Route::post('me', 'AuthController@me');
+
+    });
+
+    Route::group(['middleware' => 'jwt.auth'], function() {
+        Route::resource('address', 'AddressController');
+    });
     // Route::resource('category', 'CategoryController');
     // Route::resource('category', 'CategoryController');
 });

@@ -1,7 +1,5 @@
 <?php
 
-// lang/en/messages.php
-
 return [
     'Unauthorized' => 'Unauthorized!',
     'welcome' => 'Wellcome to our api application!',
@@ -17,5 +15,9 @@ return [
     'createProduct' => 'Product created successfully',
     'updateProduct' => 'Product updated successfully',
     'deleteProduct' => 'Product successfully deleted',
+
+    'createAddress' => 'Address created successfully',
+    'updateAddress' => 'Address updated successfully',
+    'deleteAddress' => 'Address successfully deleted',
 
 ];
