@@ -42,7 +42,7 @@ class ProductController extends Controller
             }
 
             return response()->json([
-                'message' => 'Categoria Adicionada Com Sucesso!',
+                'message' => __('messages.createProduct'),
                 'data' => $product,
             ]);
         } catch (\Throwable $th) {
@@ -85,7 +85,7 @@ class ProductController extends Controller
             }
 
             return response()->json([
-                'message' => 'Categoria Atualizada Com Sucesso!'
+                'message' => __('messages.updateProduct')
             ], 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);
@@ -105,7 +105,7 @@ class ProductController extends Controller
             $product->delete();
 
             return response()->json([
-                'message' => 'Categoria Deletada Com Sucesso!'
+                'message' => __('messages.deleteProduct')
             ], 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);

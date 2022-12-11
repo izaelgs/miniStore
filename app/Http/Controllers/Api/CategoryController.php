@@ -54,7 +54,7 @@ class CategoryController extends Controller
 
             $category = Category::create($data);
             return response()->json([
-                'message' => 'Categoria Adicionada Com Sucesso!',
+                'message' => __('messages.createCategory'),
                 'data' => $category,
             ]);
         } catch (\Throwable $th) {
@@ -101,7 +101,7 @@ class CategoryController extends Controller
             $category = Category::find($id);
             $category->update($request->all());
             return response()->json([
-                'message' => 'Categoria Atualizada Com Sucesso!'
+                'message' => __('messages.updateCategory')
             ], 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);
@@ -121,7 +121,7 @@ class CategoryController extends Controller
             $category->delete();
 
             return response()->json([
-                'message' => 'Categoria Deletada Com Sucesso!'
+                'message' => __('messages.deleteCategory')
             ], 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 401);

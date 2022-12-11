@@ -54,7 +54,7 @@ class UserController extends Controller
             $data['password'] = bcrypt($data['password']);
             $user = $this->user->create($data);
 
-            return response()->json(['message' => 'Cadastro concluido com suseso'], 200);
+            return response()->json(['message' => __('messages.createUser')], 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
             // $message = new ApiMessages($e->getMessage());
@@ -78,7 +78,7 @@ class UserController extends Controller
 
             return response()->json([
                 'data' => [
-                    'msg' => 'Cadastro atualizado com suseso'
+                    'msg' => __('messages.updateUser')
                 ]
             ], 200);
         } catch (\Exception $e) {
@@ -95,7 +95,7 @@ class UserController extends Controller
             $user = $this->user->findOrFail($id);
             $user->delete();
 
-            return response()->json(['message' => 'Cadastro removido com suseso'], 200);
+            return response()->json(['message' => __('messages.deleteUser')], 200);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 401);
             // $message = new ApiMessages($e->getMessage());
