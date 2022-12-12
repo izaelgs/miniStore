@@ -15,7 +15,8 @@ class OrderController extends Controller
     private $user;
 
 
-    public function index() {
+    public function index()
+    {
 
         try {
             $order = auth('api')->user()->orders()->paginate('10');
@@ -28,10 +29,11 @@ class OrderController extends Controller
         }
     }
 
-    public function show($id) {
+    public function show($id)
+    {
 
         try {
-            $order = auth('api')->user()->orders()->findOrFail($id);
+            $order = auth('api')->user()->orders()->with('items')->findOrFail($id);
 
             return response()->json($order, 200);
 
@@ -43,7 +45,8 @@ class OrderController extends Controller
 
     }
 
-    public function store(OrderRequest $request) {
+    public function store(OrderRequest $request)
+    {
 
         $data = $request->all();
         $data['user_id'] = auth('api')->user()->id;
@@ -51,18 +54,21 @@ class OrderController extends Controller
 
         try {
 
-            $items = [];
+            $products = [];
 
             foreach ($data['items'] as $item) {
-                $items[] = Product::find($item);
+                $products[] = Product::find($item);
             }
 
             $order = Order::create($data);
 
-            foreach ($items as $item) {
+            foreach ($products as $product) {
+                $item = [];
                 $item['order_id'] = $order->id;
-                $item['product_id'] = $item->id;
-                $item['id'] = null;
+                $item['product_id'] = $product->id;
+                $item['price'] = $product->price;
+                $item['amount'] = 1;
+                $item['date'] = $data['date'];
                 Item::create($item);
             }
             // $order->categories()->sync($data['items']);
@@ -70,7 +76,7 @@ class OrderController extends Controller
 
             return response()->json([
                 "message" => __('messages.createAddress'),
-                "data" => $items
+                "data" => $order->with('items')
             ], 200);
         } catch (\Exception $e) {
             return response()->json(["message" => $e->getMessage()], 401);

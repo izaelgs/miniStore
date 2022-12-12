@@ -20,4 +20,8 @@ return [
     'updateAddress' => 'Address updated successfully',
     'deleteAddress' => 'Address successfully deleted',
 
+    'addCartItem' => 'Item added successfully',
+    'removeCartItem' => 'Item removed successfully',
+    'updateCartItem' => 'Item updated successfully',
+
 ];
