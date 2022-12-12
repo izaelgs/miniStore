@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Http\Resources\OrderResource;
+use App\Models\CartItem;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
@@ -33,7 +35,9 @@ class OrderController extends Controller
     {
 
         try {
-            $order = auth('api')->user()->orders()->with('items')->findOrFail($id);
+            $order = new OrderResource(
+                auth('api')->user()->orders()->with('items')->findOrFail($id)
+            );
 
             return response()->json($order, 200);
 
@@ -54,24 +58,24 @@ class OrderController extends Controller
 
         try {
 
-            $products = [];
-
-            foreach ($data['items'] as $item) {
-                $products[] = Product::find($item);
-            }
-
             $order = Order::create($data);
 
-            foreach ($products as $product) {
+            $cart = auth('api')->user()->cartItems()->get();
+
+            if($cart->isEmpty()) return response()->json(["message" => "Não foi possível encontrar nenhum item no carrinho"], 401);
+
+            foreach ($cart as $cartItem) {
                 $item = [];
                 $item['order_id'] = $order->id;
-                $item['product_id'] = $product->id;
-                $item['price'] = $product->price;
-                $item['amount'] = 1;
+                $item['product_id'] = $cartItem->product_id;
+                $item['price'] = $cartItem->price;
+                $item['quantity'] = $cartItem->quantity;
                 $item['date'] = $data['date'];
+
                 Item::create($item);
             }
-            // $order->categories()->sync($data['items']);
+
+            CartItem::where('user_id', auth('api')->user()->id)->delete();
 
 
             return response()->json([
