@@ -33,6 +33,7 @@ Route::namespace('App\Http\Controllers\Api')->group(function() {
 
     Route::group(['middleware' => 'jwt.auth'], function() {
         Route::resource('address', 'AddressController');
+        Route::resource('order', 'OrderController');
     });
     // Route::resource('category', 'CategoryController');
     // Route::resource('category', 'CategoryController');

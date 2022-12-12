@@ -30,7 +30,7 @@ class CreateOrdersTable extends Migration
                 * 5 - entregue
                 * 6 - em devolução
                 */
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1);
 
             $table->timestamps();
         });
