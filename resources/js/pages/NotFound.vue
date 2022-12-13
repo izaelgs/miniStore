@@ -3,10 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Não há nada por aqui</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        Não achei esse trem que ce ta procurando
                     </div>
                 </div>
             </div>
