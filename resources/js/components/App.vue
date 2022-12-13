@@ -4,9 +4,7 @@
         <content>
             <router-view></router-view>
         </content>
-        <footer class="bg-light border-top text-secondary d-flex align-items-center justify-content-center">
-            @Todos os direitos violados
-        </footer>
+        <Footer />
         <!-- <Login></Login> -->
     </main>
 </template>
@@ -15,6 +13,7 @@
 
 import Api from '../mixins/Api.vue';
 import Login from '../pages/Login.vue';
+import Footer from './Footer.vue';
 import Navbar from './Navbar.vue';
 
 export default {
@@ -30,7 +29,7 @@ export default {
             // this.user = data;
         }, null, true, true)
     },
-    components: { Login, Navbar },
+    components: { Login, Navbar, Footer },
 
     mixins: [Api]
 }

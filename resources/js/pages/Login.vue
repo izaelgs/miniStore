@@ -67,7 +67,7 @@ export default {
                 this.$router.push('/');
             }, err => {
                 this.loaded = true;
-            }, true, true)
+            }, true)
         },
     },
 

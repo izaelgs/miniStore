@@ -1,16 +1,16 @@
 <template>
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid bg-light">
+        <div class="container bg-light">
             <router-link
                 :to="{ name: 'home' }"
                 class="navbar-brand"
             >
-                Navbar
+                miniStore
             </router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul
                     v-if="user"
                     class="navbar-nav"
@@ -27,7 +27,7 @@
                 </ul>
                 <ul
                     v-else
-                    class="navbar-nav"
+                    class="navbar-nav justify-content-end"
                 >
                     <li class="nav-item">
                         <router-link

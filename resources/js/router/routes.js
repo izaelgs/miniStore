@@ -26,7 +26,6 @@ export default {
             path: '/',
             name: 'home',
             component: Home,
-            beforeEnter: Guard.auth
         },
         {
             path: '/register',
