@@ -1,7 +1,7 @@
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Register from '../pages/Register';
-import Target from '../pages/Target';
+import Product from '../pages/Product';
 import CreateTarget from '../pages/CreateTarget';
 import Login from '../pages/Login';
 
@@ -33,9 +33,9 @@ export default {
             component: Register,
         },
         {
-            path: '/target/:id',
-            name: 'show-target',
-            component: Target,
+            path: '/product/:slug',
+            name: 'product',
+            component: Product,
             beforeEnter: Guard.auth
         },
         {
