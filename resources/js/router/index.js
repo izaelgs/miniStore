@@ -7,13 +7,13 @@ import Login from '../pages/Login';
 
 import Guard from '../services/middleware';
 
-export default {
-    mode: 'history',
-    linkActiveClass: 'fw-bolder',
+import { createRouter, createMemoryHistory } from 'vue-router';
 
+export default createRouter({
+    history: createMemoryHistory(),
     routes: [
         {
-            path: '*',
+            path: '/:catchAll(.*)',
             name: 'notfound',
             component: NotFound,
         },
@@ -45,4 +45,4 @@ export default {
             beforeEnter: Guard.auth
         },
     ]
-}
+})

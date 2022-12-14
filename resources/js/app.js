@@ -3,18 +3,23 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-import App from './components/App';
-import VueRouter from 'vue-router';
-import routes from './router/routes';
+// import App from './components/App';
+import { createApp } from 'vue';
+import router from './router';
 import store from './store';
-import Vue from 'vue';
 
-Vue.use(VueRouter);
-Vue.use(store)
+import App from './components/App.vue'
+createApp(App)
+    .use(store)
+    .use(router)
+    .mount("#app")
 
-const app = new Vue({
-    el: '#app',
-    components: {App},
-    router: new VueRouter(routes),
-    store: store
-});
+// Vue.use(VueRouter);
+// Vue.use(store)
+
+// const app = new Vue({
+//     el: '#app',
+//     components: {App},
+//     router: new VueRouter(routes),
+//     store: store
+// });
