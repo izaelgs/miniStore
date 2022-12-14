@@ -1,16 +1,32 @@
 <template>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container bg-light">
             <router-link
                 :to="{ name: 'home' }"
-                class="navbar-brand"
+                class="navbar-brand text-success fw-bolder flex-fill"
             >
                 miniStore
             </router-link>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <!-- Toggle -->
+            <button class="navbar-toggler mx-2 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+            <!-- Cart -->
+            <router-link
+                v-if="user"
+                :to="{ name: 'cart' }"
+                class="text-success"
+            >
+                <Icon
+                    icon="ic:baseline-shopping-cart"
+                    width="28px"
+                />
+            </router-link>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse justify-content-end flex-grow-0" id="navbarNav">
                 <ul
                     v-if="user"
                     class="navbar-nav"
@@ -56,15 +72,9 @@
 import Cookie from 'js-cookie';
 import { mapGetters } from 'vuex';
 
-export default {
-    data() {
-        return {
-            active: false,
-        };
-    },
+import { Icon } from '@iconify/vue';
 
-    created() {
-    },
+export default {
 
     methods: {
         logout() {
@@ -76,6 +86,8 @@ export default {
 
     computed: {
         ...mapGetters(['user'])
-    }
+    },
+
+    components: { Icon }
 };
 </script>

@@ -8,6 +8,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@iconify/vue": "^4.0.2",
         "@popperjs/core": "^2.10.2",
         "@vue/compiler-sfc": "^3.2.45",
         "axios": "^0.21.4",

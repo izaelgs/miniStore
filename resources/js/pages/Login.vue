@@ -22,7 +22,6 @@
 <script>
 
 import Cookie from 'js-cookie';
-import AppendToast from '../mixins/appendToast.vue';
 import Loader from '../components/Loader.vue';
 import Api from '../mixins/Api.vue';
 
@@ -73,7 +72,7 @@ export default {
 
     components: {Loader},
 
-    mixins: [AppendToast, Api]
+    mixins: [Api]
 }
 
 </script>

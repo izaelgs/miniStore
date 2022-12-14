@@ -17,16 +17,10 @@ import Footer from './Footer.vue';
 import Navbar from './Navbar.vue';
 
 export default {
-    data() {
-        return {
-            user: false
-        };
-    },
 
     created() {
         this.post('me', null, data => {
             this.$store.dispatch('user', data);
-            // this.user = data;
         }, null, true, true)
     },
     components: { Login, Navbar, Footer },

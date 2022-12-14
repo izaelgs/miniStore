@@ -96,7 +96,7 @@ export default {
 
     components: {Loader},
 
-    mixins: [AppendToast, Api]
+    mixins: [Api]
 }
 
 </script>

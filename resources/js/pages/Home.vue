@@ -1,9 +1,9 @@
 <template>
-    <div class="container" sty>
+    <div class="container bg-white rounded mt-2 p-4">
         <div class="row gx-2">
-            <div v-if="user">
-                <h2>Wellcome, {{ user.name }}!!</h2>
-                <p>We are always happy having you here with us :)</p>
+            <div v-if="user" class="p-4">
+                <h2 class="text-primary fw-bold" >Wellcome, {{ user.name }}!!!</h2>
+                <p class="text-secondary">We are always happy having you here with us XD</p>
             </div>
             <div
                 v-else
@@ -50,7 +50,6 @@ export default {
     created() {
         this.get('product', data => {
             this.products = data;
-            console.log(this.products);
         }, null, true)
     },
 

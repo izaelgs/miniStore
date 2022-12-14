@@ -1,16 +1,20 @@
-import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
+import Home from '../pages/Home';
+
 import Register from '../pages/Register';
-import Product from '../pages/Product';
-import CreateTarget from '../pages/CreateTarget';
 import Login from '../pages/Login';
+
+import Profile from '../pages/Profile';
+import Cart from '../pages/Cart';
+
+import Product from '../pages/Product';
 
 import Guard from '../services/middleware';
 
-import { createRouter, createMemoryHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 export default createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/:catchAll(.*)',
@@ -36,12 +40,17 @@ export default createRouter({
             path: '/product/:slug',
             name: 'product',
             component: Product,
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: Profile,
             beforeEnter: Guard.auth
         },
         {
-            path: '/new-target',
-            name: 'new-target',
-            component: CreateTarget,
+            path: '/cart',
+            name: 'cart',
+            component: Cart,
             beforeEnter: Guard.auth
         },
     ]
