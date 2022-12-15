@@ -5,7 +5,6 @@
             <router-link
                 :to="{ name: 'product', params: { slug: product.id }}"
                 class="card-title text-decoration-none mb-4"
-                href=""
             >
                 <p class="text-black">
                     {{

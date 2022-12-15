@@ -1,9 +1,9 @@
 <template>
     <main>
         <Navbar></Navbar>
-        <content>
+        <div>
             <router-view></router-view>
-        </content>
+        </div>
         <Footer />
         <!-- <Login></Login> -->
     </main>

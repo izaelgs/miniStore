@@ -57,7 +57,7 @@ class CartItemController extends Controller
             $item = [];
             $item['user_id'] = auth('api')->user()->id;
             $item['product_id'] = $product->id;
-            $item['price'] = $product->price;
+            $item['price'] = $data['quantity'] * $product->price;
             $item['quantity'] = $data['quantity'];
             $item['date'] = date("Y-m-d");
 
@@ -128,6 +128,15 @@ class CartItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $cart = auth('api')->user()->cartItems()->findOrFail($id);
+            $cart->delete();
+
+            return response()->json([
+                'message' => __('messages.removeCartItem')
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 401);
+        }
     }
 }

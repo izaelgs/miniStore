@@ -35,7 +35,7 @@ export default{methods: {
 
             toast.innerHTML = `
             <div class="toast-header  bg-${status} text-light">
-                <strong class="me-auto">TargetManager</strong>
+                <strong class="me-auto">miniStore</strong>
                 <small>Agora</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>

@@ -1,8 +1,8 @@
 <template>
     <footer class="bg-light border-top d-flex align-items-center">
-        <div class="container text-secondary">
+        <small class="container text-secondary">
             @Todos os direitos violados
-        </div>
+        </small>
     </footer>
 </template>
 <script>
