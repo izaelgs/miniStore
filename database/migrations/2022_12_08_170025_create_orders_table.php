@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
 
             $table->foreignId('user_id')
                 ->constrained();
+            $table->foreignId('address_id')
+                ->constrained();
 
             $table->dateTime('date');
 

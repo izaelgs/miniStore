@@ -49,6 +49,11 @@ export default {
 
     created() {
         this.get('product', data => {
+
+            data.forEach(product => {
+                product.price = parseFloat(product.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            })
+
             this.products = data;
         }, null, true)
     },

@@ -6,6 +6,7 @@ import Login from '../pages/Login';
 
 import Profile from '../pages/Profile';
 import Cart from '../pages/Cart';
+import Order from '../pages/Order';
 
 import Product from '../pages/Product';
 
@@ -51,6 +52,12 @@ export default createRouter({
             path: '/cart',
             name: 'cart',
             component: Cart,
+            beforeEnter: Guard.auth
+        },
+        {
+            path: '/order',
+            name: 'order',
+            component: Order,
             beforeEnter: Guard.auth
         },
     ]

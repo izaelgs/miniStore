@@ -13,7 +13,7 @@
                             product.name
                     }}
                 </p>
-                <p class="card-text fw-bold text-green">R$ {{ product.price }}</p>
+                <p class="card-text fw-bold text-green">{{ product.price }}</p>
             </router-link>
             <button class="btn btn-success text-white">Comprar</button>
         </div>

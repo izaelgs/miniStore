@@ -29,6 +29,8 @@ export default {
                 callback(data.data);
             })
             .catch(error => {
+                if(error.response.status == 401 && this.$route.name != 'login') this.$router.push('/login');
+
                 if(!hideSuccessMessage) this.showErrors(error.response.data)
                 if(errorHandler) errorHandler(error.response.data)
             })
@@ -41,6 +43,8 @@ export default {
                     callback(data.data)
                 })
                 .catch(error => {
+                    if(error.response.status == 401 && this.$route.name != 'login') this.$router.push('/login');
+
                     if(!hideErrorMessage) this.showErrors(error.response.data);
                     if(errorHandler) errorHandler(error.response.data);
                 })
@@ -53,6 +57,8 @@ export default {
                     callback(data.data)
                 })
                 .catch(error => {
+                    if(error.response.status == 401 && this.$route.name != 'login') this.$router.push('/login');
+
                     errorHandler ?
                         errorHandler(error.response.data) :
                         this.showErrors(error.response.data);
@@ -66,6 +72,8 @@ export default {
                     callback(data.data)
                 })
                 .catch(error => {
+                    if(error.response.status == 401 && this.$route.name != 'login') this.$router.push('/login');
+
                     errorHandler ?
                         errorHandler(error.response.data) :
                         this.showErrors(error.response.data);

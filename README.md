@@ -3,8 +3,10 @@
 ## Technologies used
 
 ### Frontend
-- VueJs
+- VueJs^3
 - VueRouter
+- VueX
+- Iconify
 - JsCookie
 - Jquery
 - Bootstrap

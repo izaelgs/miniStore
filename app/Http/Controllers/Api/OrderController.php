@@ -58,11 +58,11 @@ class OrderController extends Controller
 
         try {
 
-            $order = Order::create($data);
-
             $cart = auth('api')->user()->cartItems()->get();
 
             if($cart->isEmpty()) return response()->json(["message" => "Não foi possível encontrar nenhum item no carrinho"], 401);
+
+            $order = Order::create($data);
 
             foreach ($cart as $cartItem) {
                 $item = [];

@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-md-2 text-center fw-bold">R$ {{ item.price }}</div>
+                    <div class="col-6 col-md-2 text-center fw-bold">{{ item.priceString }}</div>
                 </div>
                 <div>
                     <button @click="removeItem(item.id)" class="btn text-danger mt-0">Excluir</button>
@@ -40,6 +40,9 @@
             <hr>
             <div>
                 <div class="fw-bold">Total: {{ total }}</div>
+            </div>
+            <div class="text-end">
+                <router-link :to="{ name: 'order'}" class="btn btn-success text-white">Proximo</router-link>
             </div>
         </div>
         <div v-else class="text-center pb-4">
@@ -66,6 +69,10 @@ export default {
 
             if(!data.length) data = false;
 
+            data.forEach(item => {
+                item.priceString = parseFloat(item.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            });
+
             this.loaded = true;
             this.items = data;
         }, null, true)
@@ -75,7 +82,7 @@ export default {
         total() {
             return this.items.reduce(
                 (accumulator, item) => accumulator + Number(item.price), 0
-            ).toFixed(2);
+            ).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
     },
 
@@ -99,6 +106,8 @@ export default {
         changeQuantity(item) {
             item.price = item.quantity * item.product.price;
             item.price = item.price.toFixed(2);
+
+            item.priceString = parseFloat(item.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
     },
 

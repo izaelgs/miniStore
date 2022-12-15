@@ -15,8 +15,15 @@ class ItemResource extends JsonResource
      */
     public function toArray($request)
     {
+        $product = Product::find($this->product_id);
+
         return [
-            'product' => new ProductResource(Product::find($this->product_id)),
+            'product' => [
+                "id" => $product->id,
+                "name" => $product->name,
+                "img_url" =>  $product->img_url,
+                "price" =>  $product->price
+            ],
             'price' => $this->price,
             'quantity' => $this->quantity,
         ];

@@ -10,7 +10,7 @@
                     <h3 class="text-black fw-normal fs-5">
                     {{ product.name }}
                     </h3>
-                    <p class="card-text text-success fw-bold fs-1">R$ {{ product.price }}</p>
+                    <p class="card-text text-success fw-bold fs-1">{{ product.price }}</p>
 
                     <div class="row mb-3">
                         <label for="quantity" class="col-6 col-md-4 col-form-label text-secondary">Quantity:</label>
@@ -69,7 +69,7 @@ export default {
     methods: {
 
         addToCart(product, event) {
-
+            event.target.disabled = true;
             let payload = {
                 "product_id" : product.id,
                 "quantity" : this.quantity
@@ -79,12 +79,16 @@ export default {
                 this.loaded = true;
             }, err => {
                 this.loaded = true;
+                event.target.disabled = false;
             })
-            event.target.disabled = true;
         },
 
         loadData() {
             this.get('product/' + this.$route.params.slug, data => {
+                data.price = parseFloat(data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                console.log(data.price);
+
                 this.product = data;
             }, null, true)
         }

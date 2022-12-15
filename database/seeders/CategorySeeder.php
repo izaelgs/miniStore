@@ -17,7 +17,8 @@ class CategorySeeder extends Seeder
         $categories = Category::insert([
             ['title' => 'Geral', 'description' => '...'],
             ['title' => 'Roupa', 'description' => '...'],
-            ['title' => 'Buseta', 'description' => '...'],
+            ['title' => 'Computador', 'description' => '...'],
+            ['title' => 'Material de Construção', 'description' => '...'],
         ]);
     }
 }
