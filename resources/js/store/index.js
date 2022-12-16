@@ -6,7 +6,7 @@ export default createStore({
         user: null,
         access_token: null,
 
-        address_id: null,
+        selecteAddress: null,
     },
 
     getters: {
@@ -18,8 +18,8 @@ export default createStore({
             return state.access_token;
         },
 
-        address_id(state) {
-            return state.address_id;
+        selecteAddress(state) {
+            return state.selecteAddress;
         },
     },
 
@@ -33,9 +33,9 @@ export default createStore({
             axios.defaults.headers['Authorization'] = "Bearer " + access_token;
         },
 
-        address_id(state, address_id) {
-            state.address_id = address_id;
-            axios.defaults.headers['Authorization'] = "Bearer " + address_id;
+        selecteAddress(state, selecteAddress) {
+            state.selecteAddress = selecteAddress;
+            axios.defaults.headers['Authorization'] = "Bearer " + selecteAddress;
         },
     },
 
@@ -48,8 +48,8 @@ export default createStore({
             context.commit('access_token', access_token);
         },
 
-        address_id(context, address_id) {
-            context.commit('address_id', address_id);
+        selecteAddress(context, selecteAddress) {
+            context.commit('selecteAddress', selecteAddress);
         },
     },
 

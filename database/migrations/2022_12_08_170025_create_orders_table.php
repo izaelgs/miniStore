@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->foreignId('address_id')
                 ->constrained();
 
+            $table->decimal('total_price', 20, 2);
+
             $table->dateTime('date');
 
                 /* tinyInteger Status

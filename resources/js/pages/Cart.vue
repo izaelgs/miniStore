@@ -42,7 +42,7 @@
                 <div class="fw-bold">Total: {{ total }}</div>
             </div>
             <div class="text-end">
-                <router-link :to="{ name: 'order'}" class="btn btn-success text-white">Proximo</router-link>
+                <router-link :to="{ name: 'orderAddress'}" class="btn btn-success text-white">Proximo</router-link>
             </div>
         </div>
         <div v-else class="text-center pb-4">

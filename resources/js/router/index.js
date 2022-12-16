@@ -6,7 +6,8 @@ import Login from '../pages/Login';
 
 import Profile from '../pages/Profile';
 import Cart from '../pages/Cart';
-import Order from '../pages/Order';
+import orderAddress from '../pages/orderAddress';
+import orderPayment from '../pages/orderPayment';
 
 import Product from '../pages/Product';
 
@@ -55,9 +56,15 @@ export default createRouter({
             beforeEnter: Guard.auth
         },
         {
-            path: '/order',
-            name: 'order',
-            component: Order,
+            path: '/orderAddress',
+            name: 'orderAddress',
+            component: orderAddress,
+            beforeEnter: Guard.auth
+        },
+        {
+            path: '/orderPayment',
+            name: 'orderPayment',
+            component: orderPayment,
             beforeEnter: Guard.auth
         },
     ]
