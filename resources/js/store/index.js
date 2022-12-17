@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import Cookie from 'js-cookie';
 
 export default createStore({
 
@@ -6,7 +7,7 @@ export default createStore({
         user: null,
         access_token: null,
 
-        selecteAddress: null,
+        address_id: null,
     },
 
     getters: {
@@ -18,8 +19,8 @@ export default createStore({
             return state.access_token;
         },
 
-        selecteAddress(state) {
-            return state.selecteAddress;
+        address_id(state) {
+            return state.address_id ?? Cookie.get("address_id");
         },
     },
 
@@ -33,9 +34,9 @@ export default createStore({
             axios.defaults.headers['Authorization'] = "Bearer " + access_token;
         },
 
-        selecteAddress(state, selecteAddress) {
-            state.selecteAddress = selecteAddress;
-            axios.defaults.headers['Authorization'] = "Bearer " + selecteAddress;
+        address_id(state, address_id) {
+            state.address_id = address_id;
+            axios.defaults.headers['Authorization'] = "Bearer " + address_id;
         },
     },
 
@@ -48,8 +49,8 @@ export default createStore({
             context.commit('access_token', access_token);
         },
 
-        selecteAddress(context, selecteAddress) {
-            context.commit('selecteAddress', selecteAddress);
+        address_id(context, address_id) {
+            context.commit('address_id', address_id);
         },
     },
 

@@ -6,7 +6,12 @@
         <section v-if="addresses" class="my-4">
             <h4>Address</h4>
             <div v-for="address in addresses" class="list-group-item card my-2 d-flex flex-row align-items-center bg-secondary bg-opacity-10 p-3">
-                <input type="radio" id="one" :value="address.id" v-model="picked">
+                <input
+                    type="radio"
+                    :value="address.id"
+                    v-model="picked"
+                    @change="changeAddress"
+                >
                 <div class="vr mx-2"></div>
                 <div class="w-100">
                     <p><b>Address</b></p>
@@ -51,7 +56,7 @@
                 </div>
             </form>
         </section>
-        <section class="text-end">
+        <section class="text-end my-3">
             <router-link :to="{ name: 'orderPayment'}" class="btn btn-success text-white">Proximo</router-link>
         </section>
     </div>
@@ -64,6 +69,7 @@ import { Icon } from '@iconify/vue';
 import Api from '../mixins/Api.vue';
 
 import { mapGetters } from 'vuex';
+import Cookie from 'js-cookie';
 
 export default {
 
@@ -71,7 +77,7 @@ export default {
         return {
             loaded: false,
 
-            picked: '',
+            picked: 0,
 
             street: '',
             number: '',
@@ -94,6 +100,8 @@ export default {
         }, err => {
             this.loaded = true;
         }, true)
+
+        this.picked = this.address_id;
     },
 
     computed: {
@@ -101,6 +109,12 @@ export default {
     },
 
     methods: {
+
+        changeAddress() {
+            this.$store.dispatch('address_id', this.picked);
+            Cookie.set('address_id', this.picked);
+        },
+
         submit() {
             this.loaded = false;
             $('.is-invalid').removeClass('is-invalid');

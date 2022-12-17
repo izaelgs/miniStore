@@ -42,7 +42,7 @@ class Payment extends Model
             return response()->json($response->json(), 200);
         else {
             // $data = $response->object()->error_messages;
-            dd($response->body() . $response->status());
+            throw new Exception($response->body() . $response->status());
         }
 
     }

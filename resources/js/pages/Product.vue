@@ -87,8 +87,6 @@ export default {
             this.get('product/' + this.$route.params.slug, data => {
                 data.price = parseFloat(data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-                console.log(data.price);
-
                 this.product = data;
             }, null, true)
         }
