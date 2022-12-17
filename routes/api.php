@@ -35,6 +35,7 @@ Route::namespace('App\Http\Controllers\Api')->group(function() {
         Route::resource('address', 'AddressController');
         Route::resource('cart', 'CartItemController');
         Route::resource('order', 'OrderController');
+        Route::resource('payment', 'PaymentController');
     });
     // Route::resource('category', 'CategoryController');
     // Route::resource('category', 'CategoryController');
