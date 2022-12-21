@@ -53,7 +53,7 @@ ___
 The first step is to download the project, for this you can copy the code below and run it in your GIT terminal
 
 ```
-git clone git@github.com:izaelgs/targetManager.git
+git clone git@github.com:izaelgs/miniStore.git
 ```
 ____
 
