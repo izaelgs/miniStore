@@ -6,8 +6,10 @@ import Login from '../pages/Login';
 
 import Profile from '../pages/Profile';
 import Cart from '../pages/Cart';
+
 import orderAddress from '../pages/orderAddress';
 import orderPayment from '../pages/orderPayment';
+import OrderCompleted from '../pages/OrderCompleted';
 
 import Product from '../pages/Product';
 
@@ -65,6 +67,12 @@ export default createRouter({
             path: '/orderPayment',
             name: 'orderPayment',
             component: orderPayment,
+            beforeEnter: Guard.auth
+        },
+        {
+            path: '/orderCompleted',
+            name: 'orderCompleted',
+            component: OrderCompleted,
             beforeEnter: Guard.auth
         },
     ]

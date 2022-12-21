@@ -10,6 +10,7 @@ use App\Models\CartItem;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\PagSeguro;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -93,13 +94,19 @@ class OrderController extends Controller
                 'complement' => $address->complement,
             ]);
 
-            $payment = new Payment([
+            $payment = new PagSeguro([
                 "value" => $order->total_price,
                 "encrypted" => $data['encrypted'],
             ]);
 
             $paymentResponse = $payment->creditCardPayment();
-            // return response()->json($paymentResponse->json(), 200);
+
+            Payment::create([
+                "order_id" => $order->id,
+                "type" => "CREDIT",
+                "amount" => $order->total_price / 100,
+                "status" => $paymentResponse['status'],
+            ]);
 
             CartItem::where('user_id', auth('api')->user()->id)->delete();
 

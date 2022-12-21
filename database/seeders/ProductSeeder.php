@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 "slug" => "pc-gamer-plataforma-intel-12ª-e-13ª-geracao-ddr4-lga-1700-full-custom",
                 "description" => "...",
                 "price" => 818.91,
-                "img_url" => "https://img.terabyteshop.com.br/produto/g/pc-gamer-plataforma-intel-12-geracao-lga-1700-full-custom_138886.jpg",
+                "img_url" => "https://images-americanas.b2w.io/produtos/1943592566/imagens/pc-gamer-intel-core-i5-ram-8gb-geforce-gtx-1050-ti-4gb-hd-1tb-500w-foxpc-power/1943592566_1_large.jpg",
             ],
             [
                 "name" => "Cadeira Gamer SuperFrame Knight, Reclinável, Suporta até 140KG, Preto e Vermelho",
