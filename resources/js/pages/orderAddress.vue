@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Loader v-show="!loaded"></Loader>
-        <h2 class="my-4" >Complete seu pedido</h2>
+        <h2 class="my-4" >Please inform the order address</h2>
         <!-- Address -->
         <section v-if="addresses" class="my-4">
             <h4>Address</h4>
@@ -57,7 +57,7 @@
             </form>
         </section>
         <section class="text-end my-3">
-            <router-link :to="{ name: 'orderPayment'}" class="btn btn-success text-white">Proximo</router-link>
+            <router-link :to="{ name: 'orderPayment'}" class="btn btn-success text-white">Next</router-link>
         </section>
     </div>
 </template>

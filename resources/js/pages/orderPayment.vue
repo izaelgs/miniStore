@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Loader v-show="!loaded"></Loader>
-        <h2 class="my-4" >Complete your order</h2>
+        <h2 class="my-4" >Please inform the payment method</h2>
         <div class="row">
             <div class="col-md-6 text-center">
                 <Icon

@@ -12,7 +12,7 @@
             <div class="form-floating mt-2">
                 <input v-model="password" type="password" class="form-control" id="floatingPassword"
                     placeholder="Password">
-                <label for="floatingPassword">Senha</label>
+                <label for="floatingPassword">Password</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Entrar</button>
         </form>

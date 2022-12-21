@@ -23,13 +23,13 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-lg btn-success text-light w-100 my-2">Comprar</button>
-                    <button @click="addToCart(product, $event)" class="btn btn-lg btn-secondary text-llight w-100">Adicionar ao carrinho</button>
+                    <button class="btn btn-lg btn-success text-light w-100 my-2">Buy</button>
+                    <button @click="addToCart(product, $event)" class="btn btn-lg btn-secondary text-llight w-100">Add to Cart</button>
                 </div>
             </div>
         </div>
         <div class="row mt-2 bg-white rounded border p-2">
-            <h5 class="mt-2">Descrição do Produto:</h5>
+            <h5 class="mt-2">Product Description:</h5>
             <p>{{ product.description }}</p>
         </div>
     </div>
