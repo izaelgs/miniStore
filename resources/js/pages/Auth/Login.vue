@@ -71,7 +71,7 @@ export default {
     },
 
     created() {
-        Cookie.remove('access_token')
+        Cookie.remove('access_token');
     },
 
     mounted() {

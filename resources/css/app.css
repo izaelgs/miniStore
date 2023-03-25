@@ -18,6 +18,10 @@ main {
     text-decoration: underline;
 }
 
+.card:hover {
+    opacity: 0.75;
+}
+
 .icon-lg {
     font-size: 10rem;
 }

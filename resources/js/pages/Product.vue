@@ -10,7 +10,7 @@
                     <h3 class="text-black fw-normal fs-5">
                     {{ product.name }}
                     </h3>
-                    <p class="card-text text-success fw-bold fs-1">{{ product.price }}</p>
+                    <p class="card-text text-primary fw-bold fs-1">{{ product.price }}</p>
 
                     <div class="row mb-3">
                         <label for="quantity" class="col-6 col-md-4 col-form-label text-secondary">Quantity:</label>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-lg btn-success text-light w-100 my-2">Buy</button>
+                    <button class="btn btn-lg btn-primary text-light w-100 my-2">Buy</button>
                     <button @click="addToCart(product, $event)" class="btn btn-lg btn-secondary text-llight w-100">Add to Cart</button>
                 </div>
             </div>
