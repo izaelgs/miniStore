@@ -3,7 +3,7 @@
         <div class="container bg-light">
             <router-link
                 :to="{ name: 'home' }"
-                class="navbar-brand text-success fw-bolder flex-fill"
+                class="navbar-brand text-primary fs-4 fw-bolder flex-fill"
             >
                 miniStore
             </router-link>
@@ -17,7 +17,7 @@
             <router-link
                 v-if="user"
                 :to="{ name: 'cart' }"
-                class="text-success"
+                class="text-primary"
             >
                 <Icon
                     icon="ic:baseline-shopping-cart"

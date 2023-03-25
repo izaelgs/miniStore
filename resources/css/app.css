@@ -13,6 +13,11 @@ main {
     grid-template-rows: 60px 1fr 50px;
 }
 
+.active {
+    color: #0DD965!important;
+    text-decoration: underline;
+}
+
 .icon-lg {
     font-size: 10rem;
 }
@@ -21,11 +26,63 @@ main {
     cursor: pointer;
 }
 
-/*
-*
-*-------------------------------------------------------loader------------------------------------------------------
-*
-*/
+
+.form-signin {
+    width: 80%;
+}
+
+.btn-primary {
+    font-weight: bold;
+    color: white; 
+}
+
+.btn-primary:hover {
+    font-weight: bold;
+    color: white; 
+}
+
+.btn-primary:active {
+    font-weight: bold;
+    color: white!important; 
+    opacity: 0.55;
+}
+
+@media (min-width: 768px) { 
+    
+    .form-signin {
+        width: 70%;
+    }
+
+}
+
+@media (min-width: 992px) { 
+    
+    .form-signin {
+        width: 60%;
+    }
+
+}
+
+@media (min-width: 1200px) { 
+    
+    .form-signin {
+        width: 50%;
+    }
+
+}
+
+@media (min-width: 1400px) { 
+    
+    .form-signin {
+        width: 40%;
+    }
+
+}
+
+/**
+ * Loader
+ *
+ */
 
 .lds-ellipsis {
     display: inline-block;

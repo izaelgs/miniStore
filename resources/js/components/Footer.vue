@@ -1,7 +1,7 @@
 <template>
     <footer class="bg-light border-top d-flex align-items-center">
         <small class="container text-secondary">
-            @Todos os direitos violados
+            @All Rights Reserved
         </small>
     </footer>
 </template>

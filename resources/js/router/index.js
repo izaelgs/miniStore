@@ -1,8 +1,8 @@
 import NotFound from '../pages/NotFound';
 import Home from '../pages/Home';
 
-import Register from '../pages/Register';
-import Login from '../pages/Login';
+import Register from '../pages/Auth/Register';
+import Login from '../pages/Auth/Login';
 
 import Profile from '../pages/Profile';
 import Cart from '../pages/Cart';
@@ -18,6 +18,7 @@ import Guard from '../services/middleware';
 import { createRouter, createWebHistory } from 'vue-router';
 
 export default createRouter({
+    linkActiveClass: "active",
     history: createWebHistory(),
     routes: [
         {

@@ -4,6 +4,10 @@ export default {
     auth(to, from, next) {
         const token = Cookie.get('access_token');
 
+        this.post('me', null, data => {
+            this.$store.dispatch('user', data);
+        }, null, true, true);
+
         if(!token) {
             next('/login')
         }

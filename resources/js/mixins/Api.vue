@@ -36,7 +36,7 @@ export default {
             })
         },
 
-        post(url,payload, callback, errorHandler, hideSuccessMessage, hideErrorMessage) {
+        post(url, payload, callback, errorHandler, hideSuccessMessage, hideErrorMessage) {
             axios.post(url, payload)
                 .then(data => {
                     if(!hideSuccessMessage) this.showToast(data.data.message, "success");

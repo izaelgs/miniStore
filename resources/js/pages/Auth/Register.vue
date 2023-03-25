@@ -27,7 +27,7 @@
                             <input v-model="password_confirmation" type="password_confirmation" class="form-control" name="password">
                         </div>
                         <div class="col-12 d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Register</button>
+                            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
                         </div>
                     </form>
                 </div>
@@ -43,9 +43,8 @@
 <script>
 
 import Cookie from 'js-cookie';
-import AppendToast from '../mixins/appendToast.vue';
-import Api from '../mixins/Api.vue';
-import Loader from '../components/Loader.vue';
+import Api from '../../mixins/Api.vue';
+import Loader from '../../components/Loader.vue';
 
 export default {
     data() {
